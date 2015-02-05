@@ -10,10 +10,10 @@
 
 # misc
 .DS_Store
+*.sublime-workspace
 /.sass-cache
 /connect.lock
 /coverage/*
 /libpeerconnection.log
-/*.sublime
 npm-debug.log
 testem.log
