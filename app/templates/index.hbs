@@ -1,5 +1,10 @@
 {{outlet}}
 
-{{#each h_item in historyItems}}
-  
+<ul>
+{{#each item in content}}
+  <li>
+    {{item.url}}
+    {{item.visitCount}}
+  </li>
 {{/each}}
+</ul>
