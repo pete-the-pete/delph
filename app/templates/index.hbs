@@ -1,10 +1,14 @@
 {{outlet}}
 
 <ul>
-{{#each item in content}}
+{{#each item in model}}
   <li>
-    {{item.url}}
-    {{item.visitCount}}
+    {{item.url}} {{item.visitCount}}
+    <ul>
+    {{#each v in item.visits}}
+      <li>{{v.transition}}</li>
+    {{/each}}
+    </ul>
   </li>
 {{/each}}
 </ul>

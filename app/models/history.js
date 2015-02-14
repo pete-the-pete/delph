@@ -6,5 +6,6 @@ export default DS.Model.extend({
   'title': DS.attr('string'),
   'typedCount': DS.attr('number'),
   'url': DS.attr('string'),
-  'visitCount': DS.attr('number')
+  'visitCount': DS.attr('number'),
+  'visits': DS.hasMany('visit', {async: true})
 });
