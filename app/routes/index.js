@@ -9,7 +9,6 @@ export default Ember.Route.extend({
     var self = this;
     Ember.run.next(function() {
       var x = model.get('firstObject');
-      debugger;
       x.get('visits').then(function(v) {
         console.debug(v.toString());
         console.debug(v.toArray());
