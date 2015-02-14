@@ -11,6 +11,7 @@ import DS from 'ember-data';
 * to point at other actual items.
 **/
 export default DS.Model.extend({
+  'chromeId': DS.attr('number'),
   'visitId': DS.attr('number'),
   'visitTime': DS.attr('number'),
   'referingVisitId': DS.attr('number'),

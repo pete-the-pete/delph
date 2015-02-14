@@ -5,38 +5,40 @@ export default DS.Adapter.extend({
 
   ALL_HISTORY: {'text':'', 'maxResults': 1},
 
-  generateIdForRecord: function () {
-    return Math.random().toString(32).slice(2).substr(0, 5);
+  mungeChromeIds: function(collection) {
+    var adapter = this;
+    collection = Ember.isArray(collection) ? collection : collection.toArray();
+    collection.forEach(function(item) {
+      item.chromeId = item.id;
+      item.id = adapter.generateIdForRecord();
+    });
+    return collection;
   },
 
-  find: function(store, type, id) {
-    debugger;
+  generateIdForRecord: function () {
+    return Math.random().toString(32).slice(2).substr(0, 5);
   },
 
   findAll: function(store, type) {
     return this.findQuery(store, type, this.ALL_HISTORY);
   },
   findQuery: function(store, type, query) {
-    var c = this.chrome;
+    var adapter = this,
+      c = adapter.chrome;
     return new Ember.RSVP.Promise(function(resolve) {
       c.history.search(query, function(historyItems) {
-        resolve(historyItems);
+        resolve(adapter.mungeChromeIds(historyItems));
       });
     });
   },
-  findHasMany: function(store, record, url, relationship) {
-    var c = this.chrome;
+  findHasMany: function(store, record, url /*, relationship*/) {
+    var adapter = this,
+      c = adapter.chrome;
     return new Ember.RSVP.Promise(function(resolve) {
       c.history.getVisits({'url':url}, function(history_visits) {
-        console.debug(history_visits);
-        Ember.run(null, resolve, history_visits);
+        resolve(adapter.mungeChromeIds(history_visits));
       });
     });
-  },
-  findMany: function() {
-    debugger;
   }
 
 });
-
-console.debug('i am the history adapter');

@@ -8,6 +8,10 @@
 		{
 			"follow_symlinks": true,
 			"path": "/Users/pliljegr/workspace/ember/chrome_extensions_dev"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "/Users/pliljegr/workspace/ember/ember_rubiks"
 		}
 	]
 }

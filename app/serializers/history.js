@@ -9,5 +9,3 @@ export default DS.JSONSerializer.extend({
     return this._super(type, hash);
   }
 });
-
-console.debug('i am the history serializer');
