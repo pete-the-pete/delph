@@ -10,7 +10,6 @@ export default DS.Adapter.extend({
   },
 
   findAll: function(store, type) {
-    debugger;
     return this.findQuery(store, type, this.ALL_HISTORY);
   },
   findQuery: function(store, type, query) {
@@ -23,6 +22,7 @@ export default DS.Adapter.extend({
     });
   },
   findHasMany: function(store, record, url, relationship) {
+    debugger;
     var c = this.chrome;
     return new Ember.RSVP.Promise(function(resolve) {
       c.history.getVisits({'url':url}, function(history_visits) {
@@ -30,6 +30,9 @@ export default DS.Adapter.extend({
         resolve(history_visits);
       });
     });
+  },
+  findMany: function() {
+    debugger;
   }
 
 });
