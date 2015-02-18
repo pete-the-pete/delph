@@ -4,7 +4,7 @@ import {
 } from 'ember-qunit';
 import Ember from "ember";
 
-var HistoryItem, env, store, adapter, chrome;
+var HistoryItem, env, store, adapter;
 
 moduleFor('adapter:history', 'HistoryAdapter', {
 });
