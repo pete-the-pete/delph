@@ -1,9 +1,18 @@
 import Ember from 'ember';
 import DS from "ember-data";
 
+/**
+* Chrome History
+* https://developer.chrome.com/extensions/history
+*
+* Use the chrome.history API to interact with the
+* browser's record of visited pages. You can add, remove,
+* and query for URLs in the browser's history.
+*/
 export default DS.Adapter.extend({
 
-  ALL_HISTORY: {'text':'', 'maxResults': 1},
+  //default is 100 items
+  ALL_HISTORY: {'text':''},
 
   mungeChromeIds: function(collection) {
     var adapter = this;
