@@ -3,7 +3,7 @@
 body {
   @include container();
   .main {
-    margin-left: 50px;
+    @include span(last 23);
   }
 }
 
