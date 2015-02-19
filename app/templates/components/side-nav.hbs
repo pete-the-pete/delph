@@ -1,1 +1,16 @@
-I am the nav
+<nav class="uk-navbar">
+  <ul class="uk-navbar-nav">
+    <li>
+      {{#link-to 'analytics' activeClass='uk-active'}}
+        <i class="uk-icon-bar-chart-o"></i>
+        <span class="screen-reader-text">Analytics</span>
+      {{/link-to}}
+    </li>
+    <li>
+      {{#link-to 'about' activeClass='uk-active'}}
+      <i class="uk-icon-info-circle"></i>
+        <span class="screen-reader-text">About</span>
+      {{/link-to}}
+    </li>
+  </ul>
+</nav>
