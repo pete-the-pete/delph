@@ -4,8 +4,8 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'delphi',
     environment: environment,
-    baseURL: '/',
-    locationType: 'hash',
+    baseURL: '',
+    locationType: 'none',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
