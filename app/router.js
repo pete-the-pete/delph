@@ -6,8 +6,8 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('about', { path: '/'});
-  this.route('analytics');
+  this.route('about');
+  this.route('analytics', {path: '/'});
 });
 
 export default Router;
