@@ -1,0 +1,10 @@
+#analytics {
+  @include container(23);
+  .history {
+    @include span(35%);
+  }
+
+  .charts {
+    @include span(60%);
+  }
+}

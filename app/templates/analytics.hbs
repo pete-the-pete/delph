@@ -1,9 +1,36 @@
 Analytics
 
-<ul>
-{{#each item in model}}
-  <li>
-    {{item.url}} {{item.visitCount}}
-  </li>
-{{/each}}
-</ul>
+<div id="analytics">
+  <div class="history">
+    {{!-- Date ranges, generic options and a custom chooser --}}
+    <div class="dates">
+      <ul>
+        <li>
+          <button>Past 24hrs</button>
+        </li>
+        <li>
+          <button>Past Week</button>
+        </li>
+        <li>
+          <button>Past Month</button>
+        </li>
+        <li>
+          <button><i class="uk-icon-calendar"></i></button>
+        </li>
+      </ul>
+    </div>
+
+    {{!-- History items for the specified ranges --}}
+    <ul class="entries">
+    {{#each item in model}}
+      <li>
+        {{item.url}} {{item.visitCount}}
+      </li>
+    {{/each}}
+    </ul>
+  </div>
+
+  <div class="charts">
+    I am the charts area
+  </div>
+</div>

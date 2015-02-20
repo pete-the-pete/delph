@@ -1,15 +1,10 @@
 // Screen
 // ======
-
-@import "grids";
+@import "susy";
 @import "uikit-mixins";
 //contains ALL of uikit, could be replaced by a 'my_uikit'
 //that only contains the used pieces
 @import "uikit.scss";
 
-$susy: (
-  columns: 24,  // The number of columns in your grid
-  gutters: 1/4, // The size of a gutter in relation to a single column
-);
-
+@import "primitives";
 @import "scaffolding";
