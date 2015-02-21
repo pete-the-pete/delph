@@ -21,13 +21,14 @@ Analytics
     </div>
 
     {{!-- History items for the specified ranges --}}
-    <ul class="entries">
-    {{#each item in model}}
+    <div class="entries">
+    {{history-items}}
+    {{!-- {{#each item in model}}
       <li>
         {{item.url}} {{item.visitCount}}
       </li>
-    {{/each}}
-    </ul>
+    {{/each}} --}}
+    </div>
   </div>
 
   <div class="charts">
