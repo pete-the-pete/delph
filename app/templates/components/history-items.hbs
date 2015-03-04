@@ -1,2 +1,8 @@
-{{yield}}
-table goes here
+
+{{ember-table
+  height=400
+  hasFooter=false
+  enableContentSelection=true
+  columnsBinding="context.columns"
+  contentBinding="context.content"
+}}
