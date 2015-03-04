@@ -12,16 +12,22 @@
     "ember-load-initializers": "ember-cli/ember-load-initializers#0.0.2",
     "ember-qunit": "0.1.8",
     "ember-qunit-notifications": "0.0.5",
-    "qunit": "~1.17.1"
+    "qunit": "~1.17.1",
+    "jquery-ui": "1.10.1",
+    "jquery-mousewheel": "~3.1.4",
+    "antiscroll": "fa3f81d3c07b647a63036da1de859fcaf1355993"
   },
   "resolutions": {
     "ember": "canary",
     "ember-data": "canary",
     "handlebars": "2.0.0",
     "jquery": "^1.11.1",
-    "jquery-ui": "~1.11.3"
+    "jquery-ui": "~1.11.3",
+    "ember-cli-test-loader": "0.1.0",
+    "ember-table": "~0.4.0"
   },
   "devDependencies": {
-    "uikit": "~2.16.2"
+    "uikit": "~2.16.2",
+    "ember-table": "~0.4.0"
   }
 }
