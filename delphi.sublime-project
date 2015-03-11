@@ -7,15 +7,11 @@
 		},
 		{
 			"follow_symlinks": true,
-			"path": "/Users/pliljegr/workspace/ember/chrome_extensions_dev"
-		},
-		{
-			"follow_symlinks": true,
-			"path": "/Users/pliljegr/workspace/ember/ember_rubiks"
-		},
-		{
-			"follow_symlinks": true,
 			"path": "/Users/pliljegr/workspace/project_notes"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "/Users/pliljegr/workspace/ember/ember-inspector"
 		}
 	]
 }
