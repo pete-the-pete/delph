@@ -1,13 +1,13 @@
 import Ember from 'ember';
 
-var extensionId = 'miebiodaenmgcmahbbinmekgigoceofc';
-
 export default Ember.Object.extend(Ember.Evented, {
+
+  extensionId: '',
 
   listenToPort: function(port) {
     port.addEventListener('message', function(event) {
-      chrome.extension.sendMessage(extensionId, event.data);
-    });
+      chrome.extension.sendMessage(this.get('extensionId'), event.data);
+    }.bind(this));
 
     function onMessageListener(message) {
       if (message.from === 'devtools') {
@@ -17,23 +17,33 @@ export default Ember.Object.extend(Ember.Evented, {
     chrome.extension.onMessageExternal.addListener(onMessageListener);
 
     port.start();
-    chrome.extension.sendMessage(extensionId, {
-      from: 'external',
-      type: 'register',
-      id: chrome.runtime.id
-    });
   },
 
-  init: function() {
-    var self = this;
+  init: function(emberInspectorId) {
+    this.set('extensionId', emberInspectorId);
+
     window.addEventListener('message', function(event) {
       if (event.data === 'debugger-client') {
         var port = event.ports[0];
-        self.listenToPort(port);
+        this.listenToPort(port);
+
+        //register this extension with the inspector
+        var manifestData = chrome.runtime.getManifest();
+        Ember.run.once(this, function() {
+          chrome.extension.sendMessage(this.get('extensionId'), {
+            from: 'external',
+            type: 'registerExtension',
+            extension: {
+              id: chrome.runtime.id,
+              name: manifestData.name,
+              version: manifestData.version
+            }
+          });
+        });
       } else if (event.data && event.data.type) {
-        chrome.extension.sendMessage(extensionId, event.data);
+        chrome.extension.sendMessage(this.get('extensionId'), event.data);
       }
-    });
+    }.bind(this));
 
 
 
@@ -42,7 +52,7 @@ export default Ember.Object.extend(Ember.Evented, {
 
 
     // clear a possible previous Ember icon
-    chrome.extension.sendMessage(extensionId, { type: 'resetEmberIcon' });
+    chrome.extension.sendMessage(this.get('extensionId'), { type: 'resetEmberIcon' });
 
     // inject JS into the page to check for an app on domready
     var libraries = window.Ember && window.Ember.libraries;
@@ -58,8 +68,7 @@ export default Ember.Object.extend(Ember.Evented, {
       window.setTimeout(function() {
         window.postMessage({
           type: 'emberVersion',
-          versions: versions,
-          extension: 'happyhappyjoyjoy'
+          versions: versions
         }, '*');
       }, 500);
     }
@@ -72,8 +81,8 @@ export default Ember.Object.extend(Ember.Evented, {
     }
 
     // FIXME
-    setTimeout(function() {
-      chrome.extension.sendMessage(extensionId, {type: 'iframes', urls: urls});
+    Ember.run.later(this, function() {
+      chrome.extension.sendMessage(this.get('extensionId'), {type: 'iframes', urls: urls});
     }, 500);
 
   }
