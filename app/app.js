@@ -17,7 +17,7 @@ App.initializer({
   name: 'chrome-bridge',
 
   initialize: function() {
-    new ChromeBridge();
+    new ChromeBridge('miebiodaenmgcmahbbinmekgigoceofc');
   }
 });
 
