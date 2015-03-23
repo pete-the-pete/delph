@@ -7,5 +7,6 @@ export default DS.Model.extend({
   'typedCount': DS.attr('number'),
   'url': DS.attr('string'),
   'visitCount': DS.attr('number'),
+  'domain': DS.belongsTo('domain', {async:true}),
   'visits': DS.hasMany('visit', {async: true})
 });
