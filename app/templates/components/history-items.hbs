@@ -1,8 +1,10 @@
-
-{{ember-table
+{{#each item in history}}
+  {{log item.url}}
+{{/each}}
+{{!-- {{ember-table
   height=400
   hasFooter=false
   enableContentSelection=true
   columnsBinding="context.columns"
   contentBinding="context.content"
-}}
+}} --}}
