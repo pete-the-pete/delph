@@ -48,6 +48,11 @@ export default DS.Adapter.extend({
         resolve(adapter.mungeChromeIds(history_visits));
       });
     });
+  },
+  findBelongsTo: function(store, record, url) {
+    //@TODO: this should go to the store since the domains are
+    //stored in basic adapter, not a rest endpoint (or chrome api)
+    store.findQuery('domain', {'hostname': record.domain});
   }
 
 });

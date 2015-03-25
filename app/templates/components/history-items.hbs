@@ -1,6 +1,22 @@
-{{#each item in history}}
-  {{log item.url}}
+<ul>
+{{#each domain in history}}
+  <li>Domain: {{domain.hostname}}
+    <ul>
+    {{#each history in domain.histories}}
+      <li>History: {{history.title}}
+        <ul>
+          {{#each visit in history.visits}}
+            <li>
+              Visit: {{visit}}
+            </li>
+          {{/each}}
+        </ul>
+      </li>
+    {{/each}}
+    </ul>
+  </li>
 {{/each}}
+</ul>
 {{!-- {{ember-table
   height=400
   hasFooter=false
